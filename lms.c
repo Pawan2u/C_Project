@@ -1,6 +1,7 @@
 #include"lms.h"
 #include<stdio.h>
 #include "conio2.h";
+
 void addUser(){
 FILE *fp=fopen("user.bin","rb");
 if(fp==NULL){
@@ -11,6 +12,8 @@ fclose(fp);
 }
 fclose(fp);
 }
+
+
 int isUserPresent(char *u,char *p){
 if(*(u)==0||*(p)==0){
     gotoxy(45,20);
@@ -25,6 +28,7 @@ if(*(u)==0||*(p)==0){
     printf("\t\t\t\t\t\t\t\t\t\t\t");
     return 0;
 }
+    
 FILE *fp=fopen("user.bin","rb");
 User user;
 fread(&user,sizeof(User),1,fp);
@@ -46,6 +50,8 @@ if(strcmp(u,user.userid)||strcmp(p,user.pwd)){
 fclose(fp);
 return 1;
 }
+
+
 int input(){
     clrscr();
   int i=0;
@@ -103,6 +109,8 @@ int input(){
  p[i]='\0';
  }while(isUserPresent(name,p)==0);
 }
+
+
 void addCategory(){
 FILE *fp=fopen("category.bin","rb");
 if(fp==NULL){
@@ -122,6 +130,8 @@ else{
     fclose(fp);
 }
 }
+
+
 int enterchoice(){
     clrscr();
 int choice,i;
@@ -163,6 +173,8 @@ gotoxy(48,1);
     scanf("%d",&choice);
     return choice;
 }
+
+
 int showCategory(){
     clrscr();
     int choice;
@@ -227,6 +239,8 @@ int showCategory(){
     }
     return choice;
 }
+
+
 int getBookId(){
     int count=100;
   FILE *fp=fopen("book.bin","rb");
@@ -362,6 +376,8 @@ do{
 }while(valid==0);
 return (&b);
 }
+
+
 void addbooks(book b,int i){
 FILE *fp=fopen("book.bin","ab");
 if(fp==NULL){
@@ -397,6 +413,8 @@ for(a=0;fread(&s,sizeof(Category),1,p)==1;a++){
  fwrite(&b,sizeof(book),1,fp);
 fclose(fp);
 }
+
+
 char * getBookName(int i){
     FILE *p=fopen("category.bin","rb");
 if(p==NULL){
@@ -416,6 +434,8 @@ for(a=0;fread(&s,sizeof(Category),1,p)==1;a++){
  fclose(p);
    return NULL;
 }
+
+
 void show_books(){
 FILE *fp=fopen("book.bin","rb");
 if(fp==NULL){
@@ -449,6 +469,8 @@ y++;
 }
 textcolor(WHITE);
 }
+
+
 int searchMenu(){
 int choice,i;
 textcolor(YELLOW);
@@ -498,6 +520,8 @@ while(1){
     return ch;
 }
 }
+
+
 void searchBooks(int ch){
 int i;
 clrscr();
@@ -562,6 +586,8 @@ if(f==0){
 fclose(fp);
 }
 //start debugging from here
+
+
 int showIssueMenu(){
     int i;
     int choice;
@@ -618,6 +644,8 @@ for(i=1;i<=240;i++)
    return choice;
 }
 }
+
+
 void addStudent(){
 FILE *fp=fopen("student.bin","rb");
 if(fp==NULL){
@@ -642,7 +670,9 @@ else{
     fclose(fp);
 }
 }
+
 int issueBook(){
+
 int bookId,i;
 book b;
 int bookfound=0,bookq=0;
@@ -738,6 +768,8 @@ fwrite(&quant,sizeof(quant),1,fp);
     fclose(fps);
     return 1;
 }
+
+
 char * get_book_name(int bid){
 FILE *fp=fopen("book.bin","rb");
 book b;
@@ -752,6 +784,8 @@ while(fread(&b,sizeof(book),1,fp)==1){
 fclose(fp);
 return NULL;
 }
+
+
 void show_issued_books(){
 IssueBook t;
 int i;
@@ -787,6 +821,8 @@ for(i=1;i<=240;i++)
     printf("%c",176);
 fclose(fp);
 }
+
+
 void search_issued_books(){
  int i;
  int id,f=0;
@@ -839,7 +875,9 @@ for(i=1;i<=240;i++)
     printf("No details of book %d found in issued books",id);
  }
  }
- char * get_student_name(int id){
+
+
+char * get_student_name(int id){
  FILE *fp=fopen("student.bin","rb");
 Student s;
 static char sname[50];
@@ -853,7 +891,9 @@ while(fread(&s,sizeof(Student),1,fp)==1){
  fclose(fp);
  return NULL;
  }
- void delete_book(){
+
+
+void delete_book(){
  int i;
  int result;
  int id,f=0;
@@ -910,6 +950,8 @@ gotoxy(47,1);
     printf("Book of id %d deleted successfully:",id);
     return;
  }
+
+
 void update_book(){
     char choice;
     do{
@@ -1014,6 +1056,8 @@ scanf("%c",&choice);
 }while(choice=='y' || choice=='Y');
 
 }
+
+
 void remove_issued_books(){
  int i;
  int result;
