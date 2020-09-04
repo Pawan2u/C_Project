@@ -9,6 +9,7 @@ int main()
 gotoxy(38,11);
 textcolor(YELLOW);
 printf(": WELCOME TO LIBRARY MANAGMENT SYSTEM :");
+ 
 gotoxy(30,14);
 textcolor(LIGHTGREEN);
 printf("* HAVING FUN IS NOT HARD.WHEN YOU HAVE A LIBRARY CARD %c *",1);
@@ -41,12 +42,14 @@ printf("%c",1);
 gotoxy(64,26);
 
 getch();
+ 
 textcolor(YELLOW);
 addUser();
 addStudent();
 input();
 addCategory();
 clrscr();
+
 int choice;
 while(1){
  choice=enterchoice();
@@ -54,9 +57,11 @@ while(1){
     exit(0);
  }
  
+
  switch(choice){
  
  case 1:
+   
      clrscr();
       book *b;
       int i;
@@ -77,62 +82,69 @@ while(1){
     break;
  
  case 2:
+   
   clrscr();
     show_books();
      getch();
     break;
+ 
  case 3:
+   
      clrscr();
      int ch=searchMenu();
      searchBooks(ch);
      getch();
     break;
+   
  case 4:
+   
      clrscr();
      int c;
      c=showIssueMenu();
      switch(c){
- case 1:
-    clrscr();
-    int i=issueBook();
-    if(i==0){
-    gotoxy(47,22);
-    printf("BOOKING FAILED!");
-    }
-    else{
+    case 1:
+      clrscr();
+      int i=issueBook();
+      if(i==0){
+      gotoxy(47,22);
+      printf("BOOKING FAILED!");
+      }
+      else{
         gotoxy(47,22);
         textcolor(LIGHTGREEN);
         printf("BOOKING SUCCSSFULL!");
-    getch();
-    }
-    break;
- case 2:
-    clrscr();
-    show_issued_books();
-    getch();
-    break;
- case 3:
-    clrscr();
-    search_issued_books();
-    getch();
-    break;
- case 4:
-    clrscr();
-    remove_issued_books();
-    getch();
-    break;
+     getch();
+     }
+     break;
+   case 2:
+     clrscr();
+     show_issued_books();
+     getch();
+     break;
+   case 3:
+     clrscr();
+     search_issued_books();
+     getch();
+     break;
+   case 4:
+     clrscr();
+     remove_issued_books();
+     getch();
+     break;
      }
      break;
  case 5:
-  clrscr();
+   
+   clrscr();
    update_book();
     break;
- case 6:
+ 
+  case 6:
     clrscr();
     delete_book();
     getch();
     break;
-}
+ }
 
 }
 getch();
